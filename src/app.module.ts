@@ -4,6 +4,7 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
 import {GameTypeModule} from './game-type/game-type.module';
 import {config} from './config/config'
 import {AppService} from "./app.service";
+import { GameArticleModule } from './game-article/game-article.module';
 
 
 @Module({
@@ -32,6 +33,7 @@ import {AppService} from "./app.service";
             inject: [ConfigService]
         }),
         GameTypeModule,
+        GameArticleModule,
     ],
 })
 
