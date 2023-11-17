@@ -9,14 +9,14 @@ export class GameArticle {
     @Prop({type: String, required: true, unique: true, min: 5, max: 40})
     title: string;
 
-    @Prop({type: String, required: true, unique: true, min: 20})
+    @Prop({type: String, required: true, unique: true, min: 15})
     content: string;
 
     @Prop({
         type: [Types.ObjectId],
         required: true,
         ref: 'GameType',
-        minLength: 1,
+        minLength: 3,
     })
     gameType: GameType[];
 }
