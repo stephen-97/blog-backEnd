@@ -15,6 +15,7 @@ export class GameArticleService {
       private gameArticleModel : mongoose.Model<GameArticle>
   ) {}
   create(createGameArticleDto: CreateGameArticleDto) {
+
     return this.gameArticleModel.create(createGameArticleDto)
   }
 
