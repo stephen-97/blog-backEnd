@@ -16,7 +16,7 @@ export class GameArticle {
         type: [Types.ObjectId],
         required: true,
         ref: 'GameType',
-        minLength: 3,
+        minLength: 1,
     })
     gameType: GameType[];
 }

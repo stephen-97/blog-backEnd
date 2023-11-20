@@ -11,8 +11,11 @@ export class GameTypeService {
     constructor(
         @InjectModel(GameType.name)
         private gameTypeModel: mongoose.Model<GameType>,
-        private appService: AppService
     ) {}
+
+    findOne(typeName : string) {
+        return this.gameTypeModel.find({name: typeName});
+    }
 
     async findAll(): Promise<GameType[]> {
         return this.gameTypeModel.find();

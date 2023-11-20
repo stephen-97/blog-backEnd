@@ -15,5 +15,6 @@ import {GameArticle, GameArticleSchema} from "../game-article/entities/game-arti
     )],
     controllers: [GameTypeController],
     providers: [GameTypeService, AppService],
+    exports: [GameTypeService]
 })
 export class GameTypeModule {}
