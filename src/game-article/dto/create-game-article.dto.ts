@@ -1,6 +1,7 @@
-import {IsArray, IsEnum, MinLength, MaxLength, IsNotEmpty, IsString, Max, Min} from 'class-validator';
+import {IsArray, ValidateNested, ArrayMinSize, MinLength, MaxLength, IsNotEmpty, IsString, Max, Min} from 'class-validator';
 import {GameType} from "../../game-type/schemas/gameType.schema";
 import {typeNames} from "../../game-type/schemas/gameType.schema";
+import {Type} from "class-transformer";
 
 export class CreateGameArticleDto {
 
@@ -18,7 +19,9 @@ export class CreateGameArticleDto {
 
     @IsNotEmpty()
     @IsArray()
-    @IsEnum(typeNames, {each: true})
-    readonly gameTypeName: Array<GameType>;
+    @ValidateNested({each: true})
+    @ArrayMinSize(1)
+    @Type(() => GameType)
+    readonly gameTypeName: GameType[];
 }
 

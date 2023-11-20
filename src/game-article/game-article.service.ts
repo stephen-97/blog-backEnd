@@ -1,55 +1,48 @@
 import {Inject, Injectable} from '@nestjs/common';
-import { CreateGameArticleDto } from './dto/create-game-article.dto';
-import { UpdateGameArticleDto } from './dto/update-game-article.dto';
+import {CreateGameArticleDto} from './dto/create-game-article.dto';
+import {UpdateGameArticleDto} from './dto/update-game-article.dto';
 import {InjectModel} from "@nestjs/mongoose";
 import {GameArticle} from "./entities/game-article.entity";
 import {GameArticleController} from "./game-article.controller";
 import * as mongoose from "mongoose";
-import { DeleteResult } from 'typeorm/driver/mongodb/typings';
+import {DeleteResult} from 'typeorm/driver/mongodb/typings';
 import {GameTypeService} from "../game-type/game-type.service";
 import {GameType} from "../game-type/schemas/gameType.schema";
 
 @Injectable()
 export class GameArticleService {
 
-  constructor(
-      @InjectModel(GameArticle.name)
-      private gameArticleModel : mongoose.Model<GameArticle>,
-      @Inject(GameTypeService)
-      private gameTypeService : GameTypeService,
-) {}
-  create(createGameArticleDto: CreateGameArticleDto) {
-    let objectGameTypes : Array<any>= [];
-    for(let i =0; i< createGameArticleDto.gameTypeName.length; i++) {
-      this.gameTypeService.findOne(createGameArticleDto[i])
-          .then((value) => {
-            if(!value) return {'error' : 'One of the gameTypes do not exist'}
-            objectGameTypes.push(value)
-            console.log(value)
-          })
+    constructor(
+        @InjectModel(GameArticle.name)
+        private readonly gameArticleModel: mongoose.Model<GameArticle>,
+        @Inject(GameTypeService)
+        private readonly gameTypeService: GameTypeService,
+    ) {
     }
-    return this.gameArticleModel.create(createGameArticleDto)
-  }
 
-  findAll() {
-    return this.gameArticleModel.find();
-  }
+    create(createGameArticleDto: CreateGameArticleDto) {
+        return this.gameArticleModel.create(createGameArticleDto)
+    }
 
-  findOne(id: number) {
-    return `This action returns a #${id} gameArticle`;
-  }
+    findAll() {
+        return this.gameArticleModel.find();
+    }
 
-  update(id: number, updateGameArticleDto: UpdateGameArticleDto) {
-    return `This action updates a #${id} gameArticle`;
-  }
+    findOne(id: number) {
+        return `This action returns a #${id} gameArticle`;
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} gameArticle`;
-  }
+    update(id: number, updateGameArticleDto: UpdateGameArticleDto) {
+        return `This action updates a #${id} gameArticle`;
+    }
 
-  removeAll(): Promise<DeleteResult> {
-    return this.gameArticleModel.deleteMany({})
-  }
+    remove(id: number) {
+        return `This action removes a #${id} gameArticle`;
+    }
+
+    removeAll(): Promise<DeleteResult> {
+        return this.gameArticleModel.deleteMany({})
+    }
 }
 
 

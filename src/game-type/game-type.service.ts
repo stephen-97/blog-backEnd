@@ -1,5 +1,5 @@
 import {Injectable} from '@nestjs/common';
-import {GameType} from "./schemas/gameType.schema";
+import {GameType, typeNames} from "./schemas/gameType.schema";
 import * as mongoose from 'mongoose';
 import {InjectModel} from '@nestjs/mongoose';
 import {AppService} from "../app.service";
@@ -13,7 +13,7 @@ export class GameTypeService {
         private gameTypeModel: mongoose.Model<GameType>,
     ) {}
 
-    findOne(typeName : string) {
+    findOne(typeName : typeNames) {
         return this.gameTypeModel.find({name: typeName});
     }
 
