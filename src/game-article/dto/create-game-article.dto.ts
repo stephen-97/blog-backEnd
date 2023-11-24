@@ -6,13 +6,13 @@ import {Type} from "class-transformer";
 export class CreateGameArticleDto {
 
     @IsString()
-    @MinLength(3)
-    @MaxLength(40)
+    @MinLength(5)
+    @MaxLength(30)
     @IsNotEmpty()
     readonly title: string;
 
     @IsString()
-    @MinLength(5)
+    @MinLength(10)
     @MaxLength(500)
     @IsNotEmpty()
     readonly content: string;
