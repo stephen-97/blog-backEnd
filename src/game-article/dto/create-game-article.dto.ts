@@ -7,7 +7,7 @@ export class CreateGameArticleDto {
 
     @IsString()
     @MinLength(5)
-    @MaxLength(30)
+    @MaxLength(25)
     @IsNotEmpty()
     readonly title: string;
 
