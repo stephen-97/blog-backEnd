@@ -1,6 +1,5 @@
 import {IsArray, ValidateNested, ArrayMinSize, MinLength, MaxLength, IsNotEmpty, IsString, Max, Min} from 'class-validator';
 import {GameType} from "../../game-type/schemas/gameType.schema";
-import {typeNames} from "../../game-type/schemas/gameType.schema";
 import {Type} from "class-transformer";
 
 export class CreateGameArticleDto {

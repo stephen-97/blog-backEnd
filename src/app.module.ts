@@ -4,6 +4,8 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
 import {GameTypeModule} from './game-type/game-type.module';
 import {config} from './config/config'
 import { GameArticleModule } from './game-article/game-article.module';
+import { ArticleImagesModule } from './article-images/article-images.module';
+import { GameArticleImagesModule } from './game-article-images/game-article-images.module';
 
 @Module({
     imports: [
@@ -32,6 +34,8 @@ import { GameArticleModule } from './game-article/game-article.module';
         }),
         GameTypeModule,
         GameArticleModule,
+        ArticleImagesModule,
+        GameArticleImagesModule,
     ],
 })
 
