@@ -20,7 +20,8 @@ export class GameArticleService {
     ) {
     }
 
-    create(createGameArticleDto: CreateGameArticleDto) {
+    create(mainFile: Express.Multer.File, createGameArticleDto: CreateGameArticleDto) {
+        console.log(mainFile)
         return this.gameArticleModel.create(createGameArticleDto)
     }
 

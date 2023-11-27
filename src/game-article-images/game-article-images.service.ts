@@ -9,8 +9,6 @@ export class GameArticleImagesService {
 
   @UseInterceptors(FileInterceptor('file'))
   create(createGameArticleImageDto: CreateGameArticleImageDto) {
-    const base64Data: string = createGameArticleImageDto.base64Data;
-
     return 'This action adds a new gameArticleImage';
   }
 

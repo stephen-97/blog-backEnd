@@ -19,6 +19,15 @@ export class GameArticle {
         minLength: 1,
     })
     gameType: GameType[];
+
+    @Prop({type: Boolean, default: false})
+    enabled: boolean
+
+    @Prop({type: String})
+    mainImage: string
+
+    @Prop({type: String})
+    images: string[]
 }
 
 export const GameArticleSchema = SchemaFactory.createForClass(GameArticle);

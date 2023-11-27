@@ -1,6 +1,19 @@
-import {IsArray, ValidateNested, ArrayMinSize, MinLength, MaxLength, IsNotEmpty, IsString, Max, Min} from 'class-validator';
+import {
+    IsArray,
+    ValidateNested,
+    ArrayMinSize,
+    MinLength,
+    MaxLength,
+    IsNotEmpty,
+    IsString,
+    Max,
+    Min,
+    IsBase64
+} from 'class-validator';
+import {HasMimeType, IsFile, MemoryStoredFile} from "nestjs-form-data";
 import {GameType} from "../../game-type/schemas/gameType.schema";
 import {Type} from "class-transformer";
+import {typeNames} from "../../game-type/schemas/gameType.schema";
 
 export class CreateGameArticleDto {
 
@@ -10,17 +23,15 @@ export class CreateGameArticleDto {
     @IsNotEmpty()
     readonly title: string;
 
-    @IsString()
-    @MinLength(10)
-    @MaxLength(500)
-    @IsNotEmpty()
-    readonly content: string;
-
     @IsNotEmpty()
     @IsArray()
-    @ValidateNested({each: true})
     @ArrayMinSize(1)
-    @Type(() => GameType)
-    readonly gameTypeName: GameType[];
+    readonly gameTypeName: typeNames[];
+
+    @IsFile()
+    @IsNotEmpty()
+    @HasMimeType(['image/jpeg', 'image/png'])
+    readonly mainImage: MemoryStoredFile;
+
 }
 
