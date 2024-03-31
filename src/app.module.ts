@@ -6,6 +6,7 @@ import {config} from './config/config'
 import { GameArticleModule } from './game-article/game-article.module';
 import { GameArticleImagesModule } from './game-article-images/game-article-images.module';
 import {NestjsFormDataModule} from "nestjs-form-data";
+import { GameArticleBlockModule } from './game-article-block/game-article-block.module';
 
 @Module({
     imports: [
@@ -35,6 +36,7 @@ import {NestjsFormDataModule} from "nestjs-form-data";
         GameTypeModule,
         GameArticleModule,
         GameArticleImagesModule,
+        GameArticleBlockModule,
     ],
 })
 

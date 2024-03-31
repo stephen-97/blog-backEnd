@@ -31,7 +31,7 @@ export class CreateGameArticleDto {
     @IsFile()
     @IsNotEmpty()
     @HasMimeType(['image/jpeg', 'image/png'])
-    readonly mainImage: MemoryStoredFile;
+    readonly images: MemoryStoredFile;
 
 }
 
