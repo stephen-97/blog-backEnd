@@ -18,7 +18,6 @@ export class GameArticleController {
     return this.gameArticleService.create(mainImage, createGameArticleDto);
   }
 
-
   @Get()
   findAll(): Promise<GameArticle[]> {
     return this.gameArticleService.findAll();

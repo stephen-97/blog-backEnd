@@ -8,11 +8,12 @@ import {
     IsString,
     Max,
     Min,
-    IsBase64
+    IsBase64, ArrayMaxSize
 } from 'class-validator';
 import {HasMimeType, IsFile, MemoryStoredFile} from "nestjs-form-data";
 import {GameType} from "../../game-type/schemas/gameType.schema";
 import {Type} from "class-transformer";
+import {GameArticleBlock} from "../../game-article-block/entities/game-article-block.entity";
 import {typeNames} from "../../game-type/schemas/gameType.schema";
 
 export class CreateGameArticleDto {
@@ -26,12 +27,17 @@ export class CreateGameArticleDto {
     @IsNotEmpty()
     @IsArray()
     @ArrayMinSize(1)
-    readonly gameTypeName: typeNames[];
+    readonly gameTypes: typeNames[];
 
-    @IsFile()
+
     @IsNotEmpty()
-    @HasMimeType(['image/jpeg', 'image/png'])
-    readonly images: MemoryStoredFile;
+    @IsArray()
+    @ArrayMinSize(1)
+    readonly articleBlocks: GameArticleBlock[];
+
+    @IsNotEmpty()
+    @IsBase64({each: true})
+    readonly image: MemoryStoredFile;
 
 }
 

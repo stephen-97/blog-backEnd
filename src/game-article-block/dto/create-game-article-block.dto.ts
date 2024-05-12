@@ -4,7 +4,7 @@ import {
     IsNotEmpty,
     IsString,
     ArrayMaxSize,
-    Validate, IsBase64, isArray
+    IsBase64,
 } from 'class-validator';
 import {HasMimeType, IsFile, MemoryStoredFile} from "nestjs-form-data";
 import { GameArticle} from "../../game-article/entities/game-article.entity";
